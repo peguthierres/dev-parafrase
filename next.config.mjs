@@ -9,6 +9,10 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+  // Remove static export for now to allow API routes
+  // output: 'export',
+  trailingSlash: true,
+  distDir: '.next',
 }
 
 export default nextConfig
