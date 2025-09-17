@@ -66,7 +66,6 @@ export function Sidebar() {
           {topAuthors.map((author, index) => (
             <Link key={author.id} href={`/authors/${author.id}`} className="block">
               <div className="flex items-center gap-3 p-2 rounded-lg hover:bg-muted/50 transition-colors">
-                <div className="flex items-center gap-2 text-sm font-medium text-muted-foreground">#{index + 1}</div>
                 <Avatar className="h-8 w-8">
                   <AvatarImage src={author.avatar || "/placeholder.svg"} />
                   <AvatarFallback className="bg-primary text-primary-foreground text-xs">
@@ -104,7 +103,6 @@ export function Sidebar() {
             <Link key={quote.id} href={`/quotes/${quote.id}`} className="block">
               <div className="p-3 rounded-lg hover:bg-muted/50 transition-colors">
                 <div className="flex items-start gap-2 mb-2">
-                  <div className="flex items-center gap-2 text-sm font-medium text-muted-foreground">#{index + 1}</div>
                   <div className="flex-1">
                     <p className="text-sm leading-relaxed line-clamp-2">"{quote.content}"</p>
                     <div className="flex items-center justify-between mt-2">

@@ -67,7 +67,6 @@ export function RightSidebar() {
             <Link key={quote.id} href={`/quotes/${quote.id}`} className="block">
               <div className="p-3 rounded-lg hover:bg-muted/50 transition-colors">
                 <div className="flex items-start gap-2">
-                  <div className="flex items-center gap-2 text-sm font-medium text-muted-foreground">#{index + 1}</div>
                   <div className="flex-1">
                     <p className="text-sm leading-relaxed line-clamp-2">"{quote.content}"</p>
                     <div className="flex items-center justify-between mt-2">
@@ -97,7 +96,6 @@ export function RightSidebar() {
             <Link key={quote.id} href={`/quotes/${quote.id}`} className="block">
               <div className="p-3 rounded-lg hover:bg-muted/50 transition-colors">
                 <div className="flex items-start gap-2">
-                  <div className="flex items-center gap-2 text-sm font-medium text-muted-foreground">#{index + 1}</div>
                   <div className="flex-1">
                     <p className="text-sm leading-relaxed line-clamp-2">"{quote.content}"</p>
                     <div className="flex items-center justify-between mt-2">

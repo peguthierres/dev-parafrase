@@ -70,11 +70,6 @@ export function QuoteCard({
   return (
     <Card className="hover:shadow-md transition-shadow">
       <CardContent className="p-6">
-        {/* Quote ID */}
-        <div className="flex justify-between items-start mb-4">
-          <div className="text-xs text-muted-foreground font-mono">#{formatQuoteId(id)}</div>
-        </div>
-
         {/* Quote Content */}
         <blockquote className="text-lg leading-relaxed text-foreground mb-4 text-pretty">"{content}"</blockquote>
 
