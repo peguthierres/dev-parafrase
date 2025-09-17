@@ -26,7 +26,9 @@ export function QuoteDetail({ quote, onLike, onShare }: QuoteDetailProps) {
     onLike?.()
   }
 
-  const handleShare = () => {
+  const handleShare = async () => {
+    if (typeof window === 'undefined') return
+    
     if (navigator.share) {
       navigator.share({
         title: `Frase de ${quote.author.name}`,

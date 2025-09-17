@@ -38,7 +38,9 @@ export function AuthorProfile({ author, quotes, onFollow, onShare }: AuthorProfi
     return null
   }
 
-  const handleShare = () => {
+  const handleShare = async () => {
+    if (typeof window === 'undefined') return
+    
     if (navigator.share) {
       navigator.share({
         title: `Perfil de ${author.name}`,

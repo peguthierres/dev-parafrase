@@ -19,7 +19,7 @@ export function SharePopup({ isOpen, onClose, content, authorName, quoteId, onSh
   const [isGeneratingImage, setIsGeneratingImage] = useState(false)
 
   const shareText = `"${content}" - ${authorName}`
-  const shareUrl = `${window.location.origin}/quotes/${quoteId}`
+  const shareUrl = typeof window !== 'undefined' ? `${window.location.origin}/quotes/${quoteId}` : `/quotes/${quoteId}`
 
   const handleCopyLink = async () => {
     try {
@@ -76,7 +76,7 @@ export function SharePopup({ isOpen, onClose, content, authorName, quoteId, onSh
         break
     }
 
-    if (url) {
+    if (url && typeof window !== 'undefined') {
       window.open(url, "_blank", "width=600,height=400")
       onShare?.()
     }
