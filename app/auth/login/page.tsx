@@ -18,25 +18,29 @@ export default function LoginPage() {
   const [isLoading, setIsLoading] = useState(false)
   const router = useRouter()
 
-  const handleLogin = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    const supabase = createClient()
     setIsLoading(true)
     setError(null)
 
     try {
+      const supabase = createClient()
       const { error } = await supabase.auth.signInWithPassword({
         email,
         password,
-        options: {
-          emailRedirectTo: process.env.NEXT_PUBLIC_DEV_SUPABASE_REDIRECT_URL || 
-            (typeof window !== 'undefined' ? window.location.origin : '/'),
-        },
       })
       if (error) throw error
       router.push("/")
     } catch (error: unknown) {
-      setError(error instanceof Error ? error.message : "Ocorreu um erro")
+      if (error instanceof Error) {
+        if (error.message.includes('Supabase não está configurado')) {
+          setError("Sistema de autenticação não configurado. Entre em contato com o administrador.")
+        } else {
+          setError(error.message)
+        }
+      } else {
+        setError("Ocorreu um erro durante o login")
+      }
     } finally {
       setIsLoading(false)
     }
@@ -51,7 +55,7 @@ export default function LoginPage() {
             <CardDescription>Entre com seu email e senha para acessar sua conta</CardDescription>
           </CardHeader>
           <CardContent>
-            <form onSubmit={handleLogin} className="space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-4">
               <div className="space-y-2">
                 <Label htmlFor="email">Email</Label>
                 <Input
